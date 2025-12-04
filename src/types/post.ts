@@ -10,3 +10,7 @@ export interface PostFormType {
   onPostCreated: () => void;
 }
 
+export interface PostListType {
+  posts: PostType[];
+}
+

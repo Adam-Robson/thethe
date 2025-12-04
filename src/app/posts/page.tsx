@@ -11,7 +11,8 @@ export default function PostsPage() {
   async function fetchPosts() {
     const response = await fetch("/api/posts");
     const data = await response.json();
-    setPosts(data);
+    console.info("Fetched posts:", data);
+    setPosts(data.posts);
   }
 
   useEffect(() => {
