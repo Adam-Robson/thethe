@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  min-height: 100dvh;
+  max-width: 100dvw;
+  width: 100%;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  font-weight: 300;
+  color: var(--text);
+  font-family: var(--barlow);
+  background: var(--canvas);
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--barlow);
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: 2.85rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 2.1rem;
+  font-weight: 400;
+  text-decoration: underline;
+  text-underline-offset: 0.01rem;
+  margin-bottom: 0.75rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+@supports (height: 100svh) {
+  body {
+    min-height: 100svh;
+  }
+}
+
+img,
+svg,
+video {
+  max-inline-size: 100%;
+  block-size: auto;
+  display: block;
+}
+
+:where(a, button, input, textarea, select):focus-visible {
+  border: 2px solid Highlight;
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.root {
+  min-height: 100dvh;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}

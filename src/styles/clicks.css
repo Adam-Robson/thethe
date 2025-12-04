@@ -1,0 +1,159 @@
+:root {
+  --duration: 820ms;
+  --ease: cubic-bezier(.2, .9, .3, 1);
+  --accent: var(--flax);
+  --contrast: var(--antiflash);
+  --line-height: 2px;
+  --line-gap: .18em;
+  --pad: .45rem .8rem;
+  --radius: .35rem;
+}
+
+/* reset interactive elements */
+a,
+a:link,
+a:visited,
+button {
+  -webkit-tap-highlight-color: transparent;
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  color: inherit;
+}
+
+a {
+  color: var(--text);
+  transition: color 5s var(--timing), text-decoration 5s var(--timing), transform 5s var(--timing);
+  text-decoration-thickness: 2px;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--primary);
+  text-underline-offset: 2px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link,
+.btn {
+  position: relative;
+  /* pseudo underline */
+  display: inline-block;
+  line-height: 1;
+  transition:
+    color var(--duration) var(--ease),
+    background-color var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease),
+    transform var(--duration) var(--ease);
+  will-change: color, background-color, transform;
+  outline: none;
+}
+
+.link::after,
+.btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: var(--line-height);
+  bottom: calc(-1 * var(--line-gap));
+  background: currentColor;
+  /* follow color */
+  transform-origin: left center;
+  transform: scaleX(0);
+  opacity: 0;
+  transition:
+    transform var(--duration) var(--ease),
+    opacity calc(var(--duration) / 2) var(--ease);
+  pointer-events: none;
+}
+
+.link {
+  color: color-mix(in srgb, black 60%, transparent);
+  text-decoration: none;
+  padding-bottom: .05em;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: var(--pad);
+  border-radius: var(--radius);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background-color: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: color var(--duration) var(--ease),
+    background-color var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease);
+}
+
+/* hover / focus */
+.link:hover,
+.link:focus-visible,
+.btn:hover,
+.btn:focus-visible {
+  color: var(--accent);
+}
+
+/* underline sync */
+.link:hover::after,
+.link:focus-visible::after,
+.btn:hover::after,
+.btn:focus-visible::after {
+  transform: scaleX(1);
+  opacity: 1;
+  transition-delay: 0ms;
+}
+
+.btn.fill-on-hover:hover,
+.btn.fill-on-hover:focus-visible {
+  background-size: 100% 100%;
+  color: var(--contrast);
+}
+
+/* keyboard focus */
+:where(.link:focus-visible, .btn:focus-visible) {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+  border-radius: .25rem;
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration: 0ms;
+  }
+
+  .link::after,
+  .btn::after {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+
+  .btn.fill-on-hover {
+    background-size: 100% 100%;
+  }
+}
+
+/* if no transition, underline via opacity */
+@supports not (transform: scaleX(0)) {
+
+  .link::after,
+  .btn::after {
+    width: 100%;
+    transform: none;
+    opacity: 0;
+    transition: opacity var(--duration) var(--ease);
+  }
+
+  .link:hover::after,
+  .btn:hover::after,
+  .link:focus-visible::after,
+  .btn:focus-visible::after {
+    opacity: 1;
+  }
+}

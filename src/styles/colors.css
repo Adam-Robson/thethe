@@ -1,0 +1,73 @@
+:root {
+  --ghost-white: hsla(240, 100%, 99%, 1);
+  --dark-coffee: hsla(28, 22%, 17%, 1);
+  --air-force-blue: hsla(195, 22%, 50%, 1);
+  --rosy-copper: hsla(10, 56%, 51%, 1);
+  --jasper: hsla(10, 41%, 55%, 1);
+  --dry-sage: hsla(53, 41%, 69%, 1);
+
+  --gunmetal: hsla(197, 20%, 18%, 1);
+  --jet: hsla(0, 0%, 20%, 1);
+  --cyan: rgb(30, 52, 67);
+  --cadet: hsla(201, 22%, 68%, 1);
+  --flax: hsla(216, 66%, 73%, 1);
+  --khaki: hsla(28, 27%, 55%, 1);
+  --champagne: hsla(36, 61%, 80%, 1);
+  --cream: hsla(65, 56%, 81%, 1);
+  --bone: hsla(55, 12%, 80%, 1);
+  --timberwolf: hsla(55, 12%, 80%, 1);
+  --antiflash: hsla(202, 21%, 93%, 1);
+
+  --background: var(--antiflash);
+  --text: var(--jet);
+  --primary: var(--flax);
+  --secondary: var(--khaki);
+  --accent: var(--champagne);
+  --alert: var(--jasper);
+  --canvas: linear-gradient(128deg,
+      white 0%,
+      var(--antiflash) 100%);
+
+  :root {
+    --default-transition-duration: 600ms;
+    --duration-short: 300ms;
+    --duration-long: 700ms;
+    --timing: cubic-bezier(0.4, 0, 0.2, 1);
+    --timing-overlay: cubic-bezier(0.2, 0, 0, 1);
+    --timing-swift: cubic-bezier(0.23, 1, 0.32, 0.9);
+    --transition-duration: 600ms;
+
+    --transition: 1200ms;
+    --timing: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: var(--jet);
+    --text: var(--antiflash);
+    --primary: var(--cadet);
+    --secondary: var(--khaki);
+    --accent: var(--flax);
+    --alert: var(--jasper);
+    --canvas: linear-gradient(133deg,
+        black 0%,
+        var(--jet) 100%);
+  }
+}
+
+:root[data-theme='dark'] {
+  --background: var(--jet);
+  --text: var(--antiflash);
+  --primary: var(--cadet);
+  --secondary: var(--khaki);
+  --accent: var(--flax);
+  --alert: var(--jasper);
+  --canvas: linear-gradient(134deg,
+      #050505ff 0%,
+      #090909ff 23%,
+      #121212ff 57%,
+      #161616ff 100%);
+  --transition: 1200ms;
+  --timing: cubic-bezier(0.4, 0, 0.2, 1);
+}
