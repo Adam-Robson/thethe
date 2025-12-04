@@ -4,7 +4,7 @@ import { join } from "node:path";
 import "dotenv/config";
 
 async function migrateDb() {
-  const db = neon(process.env.DATABASE_URL! ?? []);
+  const db = neon(process.env.DATABASE_URL! ?? "");
 
   const migration = await readFile(
     join(process.cwd(), "src/db/sql/posts.sql"),

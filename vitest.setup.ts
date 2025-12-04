@@ -1,4 +1,4 @@
-import { beforeEach, afterEach, vi } from 'vitest';
+import { beforeEach, afterEach } from 'vitest';
 
 beforeEach(() => {
   // before each test runs

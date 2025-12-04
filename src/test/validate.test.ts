@@ -1,4 +1,4 @@
-import { expect, test} from 'vitest';
+import { expect, test } from 'vitest';
 
 test('validate test example', () => {
   expect(1 + 1).toBe(2);
