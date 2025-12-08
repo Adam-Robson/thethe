@@ -15,7 +15,6 @@ updates:
       prefix-development: "chore(dev-deps):"
     labels:
       - "dependencies"
-      - "automated-pr"
     ignore:
       - dependency-name: "react"
         update-types: ["version-update:semver-major"]
